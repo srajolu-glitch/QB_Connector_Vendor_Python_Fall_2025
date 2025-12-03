@@ -39,3 +39,33 @@ Executable appears in: dist/vendor_compare.exe
 ```bash
 dist\vendor_compare.exe --workbook company_data.xlsx
 ```
+
+## Example JSON
+```bash
+{
+  "status": "success",
+  "generated_at": "2025-12-03T19:34:14.860918+00:00",
+  "added_vendors": [
+    {
+      "record_id": "555",
+      "name": "Only Excel"
+    }
+  ],
+  "conflicts": [
+    {
+      "record_id": "5",
+      "reason": "data_mismatch",
+      "excel_name": "Test-sid",
+      "qb_name": "Piston Exports - test"
+    },
+    {
+      "record_id": "99",
+      "reason": "missing_in_excel",
+      "excel_name": null,
+      "qb_name": "only QB"
+    }
+  ],
+  "same_vendors": 4,
+  "error": null
+}
+```
