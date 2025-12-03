@@ -1,32 +1,45 @@
-# Vendor Connector
+# Vendor Comparison & QuickBooks Sync 
 
-## Setup Project
-Once you forked and cloned the repo, run:
-```bash
-poetry install
-```
-to install dependencies.
-Then write code in the src/ folder.
+## Overview
+This project compares vendor data from an Excel file against the vendor list stored in QuickBooks Desktop.
+The tool identifies:
+- Vendors in both Excel and QB with same data
+- Vendors only in Excel (added to QB)
+- Vendors only in QB
+- Vendors with same ID but mismatched data
 
-## Quality Check
+The program outputs a JSON report and includes a CLI and Windows executable.
+
+
+## How to Run the CLI
 To setup pre-commit hook (you only need to do this once):
 ```bash
-poetry run pre-commit install
+poetry run python -m src.cli --workbook company_data.xlsx
 ```
-To manually run pre-commit checks:
+or
 ```bash
-poetry run pre-commit run --all-file
+python -m src.cli --workbook company_data.xlsx
 ```
-To manually run ruff check and auto fix:
+This generates: comparison_report.json
+
+
+## How to Build EXE
+Install PyInstaller:
 ```bash
-poetry run ruff check --fix
+poetry add pyinstaller --group dev
+```
+or
+```bash
+pip install pyinstaller
 ```
 
-## Test
-Run
+## Build EXE:
 ```bash
-poetry run pytest
+pyinstaller --onefile --name vendor_compare src/cli.py
 ```
+Executable appears in: dist/vendor_compare.exe
 
-## Build
-To be filled by student. The CLI project needs to be built as an .exe file.
+## Run EXE:
+```bash
+dist\vendor_compare.exe --workbook company_data.xlsx
+```
