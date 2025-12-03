@@ -35,7 +35,7 @@ pip install pyinstaller
 
 ## Build EXE:
 ```bash
-pyinstaller --onefile --name vendor_compare src/cli.py
+poetry run pyinstaller --onefile --name vendor_compare src/cli.py
 ```
 Executable appears in: dist/vendor_compare.exe
 
