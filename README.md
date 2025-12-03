@@ -28,10 +28,6 @@ Install PyInstaller:
 ```bash
 poetry add pyinstaller --group dev
 ```
-or
-```bash
-pip install pyinstaller
-```
 
 ## Build EXE:
 ```bash
