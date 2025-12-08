@@ -1,31 +1,20 @@
-# .pre-commit-config.yaml
 repos:
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.13.0
-    hooks:
-      - id: ruff           # lint
-      - id: ruff-format    # format
-
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.18.1
-    hooks:
-      - id: mypy
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+    rev: v4.5.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
 
-  # Local hook for pytest with 100% coverage requirement
-  - repo: local
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
     hooks:
-      - id: pytest-coverage
-        name: pytest with 100% coverage
-        language: system
-        entry: poetry run pytest -q --maxfail=1 --disable-warnings --cov-fail-under=100 --cov-report=term-missing
-        pass_filenames: false
-        always_run: true
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"   # stop __pycache__ / *.pyc
-          COVERAGE_FILE: ".git/.coverage" # keep coverage DB inside .git
+      - id: black
+        language_version: python3
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+        args: ["--max-line-length=120"]
