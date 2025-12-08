@@ -10,7 +10,7 @@ except ImportError:
 
 from .models import Vendor
 
-APP_NAME = "QuickBooks Connector"
+APP_NAME = "Quickbooks Connector"
 
 
 def _require_win32com() -> None:
