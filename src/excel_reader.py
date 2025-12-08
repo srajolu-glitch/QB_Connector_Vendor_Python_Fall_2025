@@ -9,7 +9,6 @@ from .models import Vendor  # Domain model used as output
 
 
 def extract_vendor_list(workbook_path: Path) -> List[Vendor]:
-
     workbook_path = Path(workbook_path)  # Ensure we have a Path instance
     if not workbook_path.exists():  # Validate the file exists
         raise FileNotFoundError(f"Workbook not found: {workbook_path}")
@@ -64,9 +63,7 @@ def extract_vendor_list(workbook_path: Path) -> List[Vendor]:
                 continue  # Skip empty/invalid IDs
 
             # Construct the domain object tagged as sourced from Excel
-            vendors.append(
-                Vendor(record_id=record_id, name=name_str, source="excel")
-            )
+            vendors.append(Vendor(record_id=record_id, name=name_str, source="excel"))
     finally:
         workbook.close()  # Always close the workbook handle
 
@@ -74,4 +71,3 @@ def extract_vendor_list(workbook_path: Path) -> List[Vendor]:
 
 
 __all__ = ["extract_vendor_list"]  # Public API
-

@@ -1,4 +1,4 @@
-# Vendor Comparison & QuickBooks Sync 
+# Vendor Comparison & QuickBooks Sync
 
 ## Overview
 This project compares vendor data from an Excel file against the vendor list stored in QuickBooks Desktop.

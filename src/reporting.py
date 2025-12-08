@@ -7,7 +7,6 @@ from typing import Any, Dict  # General-purpose types
 
 
 def write_report(payload: Dict[str, Any], output_path: Path) -> Path:
-
     output_path.parent.mkdir(parents=True, exist_ok=True)  # Ensure directory exists
     with output_path.open("w", encoding="utf-8") as handle:  # Open for writing text
         json.dump(payload, handle, indent=2)  # Write pretty-printed JSON

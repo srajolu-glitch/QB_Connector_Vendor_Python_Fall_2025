@@ -20,5 +20,3 @@ if report.excel_only:
     add_vendor_list(report.excel_only)
 else:
     print("No Excel-only vendors to add.")
-
-

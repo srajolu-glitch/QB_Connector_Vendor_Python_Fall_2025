@@ -44,9 +44,7 @@ def run_vendor_sync(
         try:
             qb_gateway.add_vendor_list(comparison.excel_only)
         except Exception as exc:
-            print(
-                f"Warning: failed to add Excel-only vendors to QuickBooks: {exc}"
-            )
+            print(f"Warning: failed to add Excel-only vendors to QuickBooks: {exc}")
 
     return report_path
 

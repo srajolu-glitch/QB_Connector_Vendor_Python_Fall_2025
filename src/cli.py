@@ -20,7 +20,7 @@ def main(argv: list[str] | None = None) -> int:
         "--workbook",
         required=True,
         help="Path to the Excel workbook containing vendor data "
-             "(e.g. company_data.xlsx).",
+        "(e.g. company_data.xlsx).",
     )
 
     parser.add_argument(

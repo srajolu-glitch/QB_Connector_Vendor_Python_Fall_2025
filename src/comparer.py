@@ -7,7 +7,7 @@ from typing import Dict, Iterable
 from .models import Vendor, Conflict, ComparisonReport
 
 
-def compare_vendor_terms(   # keep this name to match the original spec
+def compare_vendor_terms(  # keep this name to match the original spec
     excel_terms: Iterable[Vendor],
     qb_terms: Iterable[Vendor],
     json_path: str = "comparison_report.json",

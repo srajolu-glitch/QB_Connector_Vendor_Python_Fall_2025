@@ -54,6 +54,7 @@ def _send_qbxml(qbxml: str) -> ET.Element:
 #         raise RuntimeError(f"QuickBooks Error {status_code}: {status_message}")
 #     return root
 
+
 def _parse_response(raw_xml: str) -> ET.Element:
     root = ET.fromstring(raw_xml)
     response = root.find(".//*[@statusCode]")
@@ -74,7 +75,6 @@ def _parse_response(raw_xml: str) -> ET.Element:
         raise RuntimeError(f"QuickBooks Error {status_code}: {status_message}")
 
     return root
-
 
 
 def fetch_vendor_list(company_file: str | None = None) -> List[Vendor]:
@@ -103,6 +103,7 @@ def fetch_vendor_list(company_file: str | None = None) -> List[Vendor]:
             vendors.append(Vendor(record_id=fax, name=name, source="quickbooks"))
     return vendors
 
+
 def add_vendor_list(vendors: list[Vendor]) -> None:
     """Add or update vendors in QuickBooks in a single batch request."""
 
@@ -128,7 +129,7 @@ def add_vendor_list(vendors: list[Vendor]) -> None:
         fax = xml_escape(vendor.record_id or "")
 
         vendor_add_rqs_lines.append(
-            "    <VendorAddRq requestID=\"{fax}\">\n"
+            '    <VendorAddRq requestID="{fax}">\n'
             "      <VendorAdd>\n"
             "        <Name>{name}</Name>\n"
             "        <IsActive>true</IsActive>\n"
@@ -143,11 +144,11 @@ def add_vendor_list(vendors: list[Vendor]) -> None:
     qbxml = (
         '<?xml version="1.0"?>\n'
         '<?qbxml version="13.0"?>\n'
-        '<QBXML>\n'
+        "<QBXML>\n"
         '  <QBXMLMsgsRq onError="continueOnError">\n'
-        f'{vendor_add_rqs}\n'
-        '  </QBXMLMsgsRq>\n'
-        '</QBXML>'
+        f"{vendor_add_rqs}\n"
+        "  </QBXMLMsgsRq>\n"
+        "</QBXML>"
     )
 
     print("--- QBXML SENT ---")
@@ -176,7 +177,6 @@ def add_vendor_list(vendors: list[Vendor]) -> None:
             f"{skipped_existing} vendors were skipped because they already "
             "exist in QuickBooks."
         )
-
 
 
 # if __name__ == "__main__":
